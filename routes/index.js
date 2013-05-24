@@ -1,10 +1,11 @@
+
 /*
  * GET home page.
  */
 
 var fs = require('fs');
 var spawn = require('child_process').spawn
-var python3 = "/Library/Frameworks/Python.framework/Versions/3.2/bin/python3"
+var python3 = "/usr/bin/python3"
 exports.index = function (req, res) {
     res.render('index', { title: 'TF-IDF' });
 };
@@ -15,9 +16,9 @@ exports.modal_target = function(req, res) {
 
 exports.uploaded = function (req, res) {
     fs.readFile(req.files.bed_file.path, function (err, data) {
-            var newPath = "/Users/ad9075/Desktop/tfidf/new.bed";
+            var newPath = "./new.bed";
             fs.writeFile(newPath, data, function (err) {
-                var idf_run = spawn(python3, ["/Users/ad9075/Downloads/Sandbox/tfidf/idf/idf.py", newPath]);
+                var idf_run = spawn(python3, ["./idf/idf.py", newPath]);
                 var idf_result = "";
                 idf_run.stdout.on('data', function (data) {
                     idf_result += data;
@@ -42,7 +43,7 @@ exports.uploaded = function (req, res) {
 
 
 exports.fake_uploaded = function (req, res) {
-    var idf_run = spawn(python3, ["/Users/ad9075/Downloads/Sandbox/tfidf/idf/idf.py", "/Users/ad9075/Downloads/Sandbox/tfidf/idf/Data/Juan_H3K27me3/4250_summits.bed"]);
+    var idf_run = spawn(python3, ["./idf/idf.py", "./idf/Data/Juan_H3K27me3/4250_summits.bed"]);
     var idf_result = "";
     idf_run.stdout.on('data', function (data) {
         idf_result += data;

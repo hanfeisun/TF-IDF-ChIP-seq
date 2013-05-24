@@ -7,6 +7,7 @@ import pickle
 import sys
 import json
 
+cur_dir = os.path.dirname(os.path.realpath(__file__))
 chr_map = {"chr1": 0,
            "chr2": 249250621,
            "chr3": 492449994,
@@ -116,7 +117,7 @@ import time
 
 
 try:
-    most_imp = pickle.load(open("/Users/ad9075/Downloads/Sandbox/tfidf/idf/most_imp", "rb"))
+    most_imp = pickle.load(open(os.path.join(cur_dir,"most_imp"), "rb"))
     print("read from file", file=sys.stderr)
 except:
     my_tfidf = TfIdf("/Users/ad9075/Downloads/Sandbox/idf/Data/Juan_H3K27me3.tab")
@@ -129,20 +130,3 @@ except:
 
 print(json.dumps(
     sorted(get_overlap(sys.argv[1], most_imp),key=lambda x: x[1], reverse=True)[:10]))
-
-
-
-
-
-
-
-
-
-
-            
-            
-
-
-
-
-
