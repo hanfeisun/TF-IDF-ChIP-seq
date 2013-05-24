@@ -1,0 +1,36 @@
+//
+   Created with IntelliJ IDEA.
+   User: ad9075
+   Date: 5/23/13
+   Time: 3:55 PM
+   To change this template use File | Settings | File Templates.
+extends layout
+block content
+    h1= title
+    p Welcome to #{title}
+
+    table.table
+        thead
+            tr
+                th Dataset ID
+                th Similarity Score
+        tbody
+            each a_row in result
+                tr
+                    td
+                       a(data-toggle="modal", href="//cistrome.org/finder/util/pure_meta?did=1660", data-target="#myModal")= a_row[0]
+                    td
+                       a(data-toggle="modal", href="/modal_target", data-target="#myModal")= a_row[1]
+
+    div#myModal.modal.fade.hide(tabindex=-1,role="dialog",aria-labelledby="mymodalLabel",aria-hidden="true")
+        div.modal-header
+            button.close(type="button", data-dismiss="modal", aria-hidden="true") x
+            h3#myModalLabel Modal header
+        div.modal-body
+
+        div.modal-footer
+            button.btn(data-dismiss="modal",aria-hidden="true") Close
+
+    form(action="upload_bed",method="post",enctype="multipart/form-data")
+        input(type="file",id="file",name="bed_file")
+        input.btn.btn-primary(type="submit",value="Search")

@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  form(action="upload_bed",method="post",enctype="multipart/form-data")
+      input(type="file",id="file",name="bed_file")
+      input(type="submit",value="Search")
