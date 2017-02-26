@@ -1,6 +1,6 @@
-# tfidf
+# TF-IDF for ChIP-seq data
 
-A Web Application to find the most similar ChIP-seq datasets according to the TF-IDF score of gene regulation.
+A Web Application to find the most similar ChIP-seq datasets (transcription factor or histone modification) according to the TF-IDF score of gene regulation.
 
 The input data is the peak file of MACS2 (https://github.com/taoliu/MACS).
 
